@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gojo Satoru - Best Photo</title>
+    <style>
+        /* General Page Styling (Pinterest Background) */
+        body {
+            background-color: #f0f0f0; /* Light grey background like Pinterest */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* The Pin Card Container */
+        .pin-container {
+            width: 300px; /* Standard Pinterest column width approx */
+            background-color: white;
+            border-radius: 20px; /* Soft rounded corners */
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+            cursor: zoom-in;
+            position: relative;
+        }
+
+        .pin-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Image Styling */
+        .pin-image-wrapper {
+            position: relative;
+            width: 100%;
+            /* Set aspect ratio or let image define height */
+        }
+
+        .pin-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        /* Overlay for Hover Effect */
+        .pin-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3); /* Darken image slightly on hover */
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        .pin-container:hover .pin-overlay {
+            opacity: 1;
+        }
+
+        /* Download Button Styling */
+        .download-btn {
+            background-color: #e60023; /* Pinterest Red */
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .download-btn:hover {
+            background-color: #ad081b;
+        }
+
+        /* Card Footer */
+        .pin-footer {
+            padding: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pin-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #111;
+            margin: 0;
+        }
+
+        .pin-source {
+            font-size: 12px;
+            color: #767676;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Main Card -->
+    <div class="pin-container">
+        <!-- Image Area -->
+        <div class="pin-image-wrapper">
+            <!-- 
+                NOTE: Replace the 'src' below with the actual URL of your Gojo Satoru image. 
+                I am using a placeholder for demonstration. 
+            -->
+            <img src="https://placehold.co/600x800/grey/white?text=Gojo+Satoru+Best+Photo" 
+                 alt="Gojo Satoru" 
+                 class="pin-image" 
+                 id="gojoImage">
+            
+            <!-- Hover Overlay -->
+            <div class="pin-overlay">
+                <a href="#" class="download-btn" id="downloadLink" download="Gojo_Satoru.jpg">
+                    <span>Download</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer Info -->
+        <div class="pin-footer">
+            <div>
+                <h3 class="pin-title">Gojo Satoru</h3>
+                <span class="pin-source">Jujutsu Kaisen</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. Select the elements
+        const imageElement = document.getElementById('gojoImage');
+        const downloadLink = document.getElementById('downloadLink');
+
+        // 2. When the image loads, update the download link to point to the actual image
+        // This ensures if you change the SRC in HTML, the button updates automatically.
+        imageElement.onload = function() {
+            // We set the href of the button to be the same as the image source
+            // In a real scenario, you might want a higher res URL here than the thumbnail
+            
+            // For this demo, we grab the src we set in HTML. 
+            // Ideally, replace 'src' below with a direct link to the High-Res file.
+            const imageSource = imageElement.src; 
+            
+            downloadLink.href = imageSource;
+        };
+
+        // Optional: Handle click to just view the image if download fails (CORS issues)
+        downloadLink.addEventListener('click', function(e) {
+            // Some browsers block downloading images from other domains (CORS).
+            // If so, we just let the link open in a new tab.
+            // If you own the server, you need to allow CORS headers.
+        });
+    </script>
+
+</body>
+</html>
